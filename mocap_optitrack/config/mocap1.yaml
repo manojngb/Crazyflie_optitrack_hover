@@ -1,0 +1,12 @@
+# 
+# Definition of all trackable objects
+# Identifier corresponds to Trackable ID set in Tracking Tools
+#pose and pose2d not used
+
+rigid_bodies:
+    '2':
+        #pose: crazyflie/base_link_mocap
+        #pose2d: crazyflie/ground_pose_mocap
+        child_frame_id: mocap/crazyflie
+        parent_frame_id: world
+        multicast_address: 224.0.0.1
