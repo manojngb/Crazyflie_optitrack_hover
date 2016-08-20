@@ -171,25 +171,20 @@ private:
             break;
         case Landing:
             {   
-                //my lines
+/my lines
                 geometry_msgs::Twist msg;
-                msg.linear.x = 0;
-                msg.linear.y = 0;
+                m_goal.pose.position.z = m_startZ + 0.1;
+                tf::StampedTransform transform;
+                m_listener.lookupTransform(m_worldFrame, m_frame, ros::Time(0), transform);
+                if (transform.getOrigin().z() <= m_startZ + 0.05) {
+                    m_state = Idle;
+                    ROS_INFO("landed!");
+                    geometry_msgs::Twist msg;
+                    m_pubNav.publish(msg);
+                }
                 msg.linear.z = 0;
-                msg.angular.z = 0;
                 m_pubNav.publish(msg);
                 ROS_INFO("landed!");
-                m_state = Idle;
-                ///
-                //m_goal.pose.position.z = m_startZ + 0.1;
-                //tf::StampedTransform transform;
-                //m_listener.lookupTransform(m_worldFrame, m_frame, ros::Time(0), transform);
-                //if (transform.getOrigin().z() <= m_startZ + 0.05) {
-                //    m_state = Idle;
-                //    ROS_INFO("landed!");
-                //    geometry_msgs::Twist msg;
-                //    m_pubNav.publish(msg);
-                //}
             }
             // intentional fall-thru
         case Automatic:
