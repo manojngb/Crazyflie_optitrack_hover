@@ -4,7 +4,7 @@ Autonomous hovering of Crazyflie with Optitrack (NESL- UCLA)
 
 ## FAST INFO
 
-######  General way to publish message
+###### **General way to publish message**
 
 rostopic pub -r 50  crazyflie/cmd_vel geometry_msgs/Twist  '{linear:  {x: 10, y: -13 , z: 45500.0}, angular: {x: 00.0,y: 0.0,z: 0.0}}'
 ctrl Z to break
@@ -14,16 +14,17 @@ rostopic pub -l  crazyflie/goal geometry_msgs/PoseStamped '{header: {frame_id: "
 
 ## Spcific for this project.
 
-######  Call the serice to start the flight:
+###### **Call the serice to start the flight:**
 
 rosservice call /crazyflie/takeoff 
 rosservice call /crazyflie/land
 
-######  This is to set the position on the fly:
+######  **This is to set the position on the fly:**
 
 rosparam set /crazyflie/positiongoal/y 1
 
-###### PID parameters tunnable (depends on the crazyflie)
+######  **PID parameters tunnable (depends on the crazyflie)**
+
 PIDs:
   X:
     kp: 6.0
@@ -63,5 +64,7 @@ PIDs:
     bias: 0
     
 / means the root of the current drive;
+
 ./ means the current directory;
+
 ../ means the parent of the current directory.
