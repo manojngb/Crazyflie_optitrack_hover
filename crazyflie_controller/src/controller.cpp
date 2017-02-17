@@ -171,7 +171,7 @@ private:
             break;
         case Landing:
             {   
-/my lines
+//my lines
                 geometry_msgs::Twist msg;
                 m_goal.pose.position.z = m_startZ + 0.1;
                 tf::StampedTransform transform;
